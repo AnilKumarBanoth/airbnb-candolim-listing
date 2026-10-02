@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "name": "airbnb-listing-replica",
+  "description": "High-fidelity modern React replica of the Romantic Jacuzzi 1BHK Candolim listing",
+  "rules": [
+    "CLAUDE.md",
+    "AGENTS.md"
+  ],
+  "skills": [
+    ".agents/skills/airbnb-ui-fidelity",
+    ".agents/skills/production-architecture",
+    ".agents/skills/code-quality-gate"
+  ]
+}

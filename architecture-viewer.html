@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Production Architecture Diagram - Airbnb Scale Vacation Rental Marketplace</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #0B1120;
+      color: #F8FAFC;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .toolbar {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+    .btn {
+      background: #FF385C;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn:hover {
+      background: #D70466;
+    }
+    .btn-secondary {
+      background: #1E293B;
+      border: 1px solid #475569;
+    }
+    .btn-secondary:hover {
+      background: #334155;
+    }
+    .diagram-card {
+      width: 100%;
+      max-width: 1400px;
+      background: #0F172A;
+      border-radius: 16px;
+      border: 1px solid #334155;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      padding: 12px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media print {
+      .toolbar { display: none; }
+      body { background: white; padding: 0; }
+      .diagram-card { border: none; box-shadow: none; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button class="btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    <a class="btn btn-secondary" href="architecture-diagram.svg" download="airbnb-production-architecture.svg">⬇️ Download SVG</a>
+  </div>
+  <div class="diagram-card">
+    <img src="architecture-diagram.svg" alt="Airbnb Production Architecture Diagram" id="diagram-img">
+  </div>
+</body>
+</html>

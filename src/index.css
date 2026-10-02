@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Root Design Tokens ─────────────────────────────────────── */
+:root {
+  --brand: #FF385C;
+  --brand-dark: #C70C33;
+  --surface-0: #FFFFFF;
+  --surface-1: #FAFAFA;
+  --surface-2: #F5F5F7;
+  --ink-primary: #111111;
+  --ink-secondary: #484848;
+  --ink-tertiary: #717171;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  --transition-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-elevated: 0 8px 40px rgba(0,0,0,0.12);
+}
+
+/* ─── Base Styles ─────────────────────────────────────────────── */
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    color: #111111;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background-color: rgba(255, 56, 92, 0.18);
+    color: #C70C33;
+  }
+}
+
+/* ─── Custom Scrollbar ────────────────────────────────────────── */
+::-webkit-scrollbar          { width: 6px; height: 6px; }
+::-webkit-scrollbar-track    { background: transparent; }
+::-webkit-scrollbar-thumb    { background: #D4D4D4; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #A0A0A0; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Brand Gradient Button ───────────────────────────────────── */
+.btn-brand {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FF385C 0%, #C70C33 100%);
+  color: #ffffff;
+  font-weight: 700;
+  transition: all 0.25s var(--transition-spring);
+  box-shadow: 0 4px 16px rgba(255, 56, 92, 0.35);
+  isolation: isolate;
+}
+.btn-brand::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.btn-brand:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 8px 28px rgba(255, 56, 92, 0.5);
+}
+.btn-brand:hover::before { opacity: 1; }
+.btn-brand:active { transform: translateY(0) scale(0.98); }
+
+/* ─── Glass Card Effect ───────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.glass-dark {
+  background: rgba(17, 17, 17, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ─── Overlay Backdrop ────────────────────────────────────────── */
+.overlay-backdrop {
+  background: rgba(10, 10, 10, 0.60);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+}
+
+/* ─── Photo Image Zoom ────────────────────────────────────────── */
+.photo-hover img {
+  transition: transform 0.5s var(--transition-spring), filter 0.4s ease;
+  will-change: transform;
+}
+.photo-hover:hover img {
+  transform: scale(1.06);
+  filter: brightness(0.95);
+}
+
+/* ─── Shimmer Loader ──────────────────────────────────────────── */
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ─── Star Rating Fill ────────────────────────────────────────── */
+.star-filled { fill: #FF385C; color: #FF385C; }
+
+/* ─── Gradient Text ───────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, #FF385C 0%, #C70C33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFB400 0%, #FF8C00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Pill Badge ──────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.badge-brand    { background: rgba(255,56,92,0.10); color: #C70C33; border: 1px solid rgba(255,56,92,0.20); }
+.badge-gold     { background: rgba(255,180,0,0.12); color: #B45309; border: 1px solid rgba(255,180,0,0.25); }
+.badge-teal     { background: rgba(0,180,216,0.10); color: #0369A1; border: 1px solid rgba(0,180,216,0.20); }
+.badge-green    { background: rgba(0,200,150,0.10); color: #065F46; border: 1px solid rgba(0,200,150,0.20); }
+.badge-neutral  { background: #F5F5F7; color: #484848; border: 1px solid #E8E8E8; }
+
+/* ─── Card Interactions ───────────────────────────────────────── */
+.card-hover {
+  transition: transform 0.3s var(--transition-spring), box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.14);
+}
+
+/* ─── Category Pill Active State ──────────────────────────────── */
+.cat-pill-active {
+  background: #111111;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.20);
+}
+.cat-pill-inactive {
+  background: #F5F5F7;
+  color: #484848;
+}
+.cat-pill-inactive:hover {
+  background: #EBEBEB;
+  color: #111111;
+}
+
+/* ─── Section Divider Gradient ────────────────────────────────── */
+.divider-gradient {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #E2E2E2 20%, #E2E2E2 80%, transparent 100%);
+  border: none;
+  margin: 0;
+}
+
+/* ─── Floating Label Input ────────────────────────────────────── */
+.floating-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255,56,92,0.25);
+}
+
+/* ─── Smooth Underline Link ───────────────────────────────────── */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0; right: 0;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.link-underline:hover::after { transform: scaleX(1.05); }
+
+/* ─── Rating Bar Fill ─────────────────────────────────────────── */
+.rating-bar {
+  height: 3px;
+  background: #E8E8E8;
+  border-radius: 99px;
+  overflow: hidden;
+}
+.rating-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FF385C, #C70C33);
+  border-radius: 99px;
+  transition: width 0.8s var(--transition-spring);
+}
+
+/* ─── Thumbnail Strip ─────────────────────────────────────────── */
+.thumb-active {
+  ring: 2px solid #111111;
+  transform: scale(1.08);
+  opacity: 1;
+}
+.thumb-inactive {
+  opacity: 0.45;
+}
+.thumb-inactive:hover { opacity: 0.85; }
+
+/* ─── Pulse Dot ───────────────────────────────────────────────── */
+.pulse-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #00C896;
+  box-shadow: 0 0 0 0 rgba(0, 200, 150, 0.4);
+  animation: pulse-ring 2s ease-out infinite;
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(0, 200, 150, 0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(0, 200, 150, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 200, 150, 0); }
+}
+
+/* ─── Calendar Range Highlight ────────────────────────────────── */
+/* Cells at start of grid row that are in range: give them rounded left side */
+.cal-range-edge-left  { border-radius: 50% 0 0 50%; }
+.cal-range-edge-right { border-radius: 0 50% 50% 0; }
